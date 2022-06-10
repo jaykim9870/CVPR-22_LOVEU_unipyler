@@ -61,3 +61,6 @@ The evaluation will be performed after each epoch. You can use Tensorboard, or j
 ## Contact
 
 Feel free to contact us if you have any problems: joyachen97@gmail.com, or leave an issue in this repo.
+
+
+## Thank you!
