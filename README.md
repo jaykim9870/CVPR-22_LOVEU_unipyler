@@ -52,13 +52,13 @@ CUDA_VISIBLE_DEVICES=0 python inference.py --cfg configs/q2a_gru+fps1+maskx-1_vi
 
 The evaluation will be performed after each epoch. You can use Tensorboard, or just terminal outputs to record evaluation results.
 
-## Baseline Performance for LOVEU@CVPR2022 Challenge: 80 videos' QA samples for training, 20 videos' QA samples for testing
+## Our best model's Performance for LOVEU@CVPR2022 Challenge: 80 videos' QA samples for training, 20 videos' QA samples for testing
 
 |  Model   | Recall@1 ↑ | Recall@3 ↑ | MR (Mean Rank) ↓ | MRR (Mean Reciprocal Rank) ↑ |
 |  ----  |  ----  |  ----  |  ----  |  ----  |
-| Q2A ([configs/q2a_gru+fps1+maskx-1_vit_b16+bert_b.yaml](configs/q2a_gru+fps1+maskx-1_vit_b16+bert_b.yaml)) | 0.38 (2) | 0.75 (1) | 2.69 (1) | 3.11 (3) |
+| Our best model | 0.38 (2) | 0.75 (1) | 2.69 (1) | 3.11 (3) |
 
-![image](https://user-images.githubusercontent.com/20626415/166685483-7c39c6e3-8d3d-43a2-a431-58bdcf67cc16.png)
+![image](https://user-images.githubusercontent.com/107248364/173806570-f6a030b6-6c46-4d3b-aa77-7dbae2b66c0f.png)
 
 ## Contact
 
