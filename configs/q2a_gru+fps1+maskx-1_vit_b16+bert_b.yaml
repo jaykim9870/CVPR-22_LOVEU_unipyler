@@ -1,13 +1,13 @@
 DATASET: 
-  TRAIN: '/home/joannekim0420/tmp/Q2A0505/encoder/outputs_/vit_b16_384_fps1/train_stage2'
-  VAL: '/home/joannekim0420/tmp/Q2A0505/encoder/outputs_/vit_b16_384_fps1/test'
-  TEST: '/home/joannekim0420/tmp/Q2A0505/encoder/outputs_/vit_b16_384_fps1/test'
-  GT: '/home/joannekim0420/tmp/Q2A0505/data/test.json'
+  TRAIN: ''
+  VAL: ''
+  TEST: ''
+  GT: ''
 DATALOADER:
   NUM_WORKERS: 0
 INPUT:
   QA: 'qa_maskx-1.pth'
-  VIDEO: 'video_v2.pth'
+  VIDEO: 'video.pth'
   SCRIPT: 'script.pth'
   DIM: 768
   NUM_MASKS: 1
@@ -27,4 +27,4 @@ SOLVER:
   MAX_EPOCHS: 100
 CHECK_VAL_EVERY_N_EPOCH: 1
 NUM_GPUS: 1
-CKPT: "/home/S20225114/CVPR_base/outputs/khy_gru_new_stage2/epoch=71-step=792.ckpt"
+CKPT: ""

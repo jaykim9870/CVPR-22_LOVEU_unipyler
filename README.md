@@ -1,6 +1,6 @@
-# Question-to-Actions for AssistQ
+# 2nd winning solution for CVPR'22 LOVEU challenge:Track 3
 
-This repo provides a baseline model for our proposed task: AssistQ: Affordance-centric Question-driven Task Completion for Egocentric Assistant. 
+This repo provides a code and the checkpoint that won the 2nd place for the track3 of CVPR'22 LOVEU challenge.
 
 [[Page]](https://showlab.github.io/assistq/)  [[Paper]](https://arxiv.org/abs/2203.04203)   [[LOVEU@CVPR'22 Challenge]](https://sites.google.com/view/loveucvpr22/track-3?authuser=0) [[CodaLab Leaderboard]](https://codalab.lisn.upsaclay.fr/competitions/4642#results)
 
@@ -10,7 +10,7 @@ Click to know the task:
 
 Model Architecture (see [[Paper]](https://arxiv.org/abs/2203.04203) for details):
 
-![arch](https://user-images.githubusercontent.com/20626415/162197041-f1b06325-098c-448a-9b65-d746d8bfe08d.png)
+![arch](https://github.com/jaykim9870/CVPR-22_LOVEU_unipyler/model_architecture.png)
 
 
 ## Install
@@ -41,10 +41,12 @@ Select the config file and simply train, e.g.,
 CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/q2a_gru+fps1+maskx-1_vit_b16+bert_b.yaml
 ```
 
+Our best model can be founded in [best model]().
+
 To inference a model, e.g.,
 
 ```
-CUDA_VISIBLE_DEVICES=0 python inference.py --cfg configs/q2a_gru+fps1+maskx-1_vit_b16+bert_b.yaml CKPT "outputs/q2a_gru+fps1+maskx-1_vit_b16+bert_b/lightning_logs/version_0/checkpoints/epoch=5-step=155.ckpt"
+CUDA_VISIBLE_DEVICES=0 python inference.py --cfg configs/q2a_gru+fps1+maskx-1_vit_b16+bert_b.yaml CKPT "best_model_path"
 ```
 
 
@@ -60,7 +62,7 @@ The evaluation will be performed after each epoch. You can use Tensorboard, or j
 
 ## Contact
 
-Feel free to contact us if you have any problems: joyachen97@gmail.com, or leave an issue in this repo.
+Feel free to contact us if you have any problems: khy0501@unist.ac.kr, or leave an issue in this repo.
 
 
 ## Thank you!

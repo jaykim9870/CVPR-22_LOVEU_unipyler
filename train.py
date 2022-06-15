@@ -13,16 +13,13 @@ import pytorch_lightning as pl
 
 x = dt.datetime.now()
 display_name = 'stage1_epoch50//' + x.strftime("%Y-%m-%d %H:%M")
-# wandb_logger = WandbLogger(entity = 'pyler', project="Q2A_baseline", name = 'khy_mlp_og_stage2')
+wandb_logger = WandbLogger()
 
 if __name__ == "__main__":
     seed_everything(0, workers=True)
     cfg = build_config()
     dataset = build_data(cfg)
     model = build_model(cfg)
-
-    # log_dir = './outputs'
-    # os.makedirs(log_dir, exist_ok=True)
 
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
         save_top_k=30,
@@ -34,10 +31,8 @@ if __name__ == "__main__":
     )
 
     trainer = Trainer(
-        #gpus=cfg.NUM_GPUS, 
         accelerator="gpu",
-        # gpus=cfg['NUM_GPUS'],
-        gpus=[4],
+        gpus=cfg['NUM_GPUS'],
         strategy=DDPPlugin(find_unused_parameters=True),
         callbacks=[
             LearningRateMonitor(logging_interval='step'), 
@@ -46,16 +41,11 @@ if __name__ == "__main__":
         benchmark=False, 
         deterministic=True,
         max_epochs=cfg.SOLVER.MAX_EPOCHS,
-        # logger= wandb_logger,
+        logger= wandb_logger,
         default_root_dir=cfg.OUTPUT_DIR,
         check_val_every_n_epoch=cfg.CHECK_VAL_EVERY_N_EPOCH,
         num_sanity_val_steps=0,
-        # EarlyStoppingCallback = True
     )
-    # trainer.fit(model, datamodule=dataset, 
-    #     ckpt_path=cfg.CKPT if hasattr(cfg, "CKPT") else None)
-    trainer.test(model=model, datamodule=dataset,
-       ckpt_path = cfg.CKPT if hasattr(cfg, "CKPT") else None)
-    # trainer.save_checkpoint("./outputs.ckpt")
-    
+    trainer.fit(model, datamodule=dataset, 
+        ckpt_path=cfg.CKPT if hasattr(cfg, "CKPT") else None)
     

@@ -60,7 +60,6 @@ class Q2A(nn.Module):
         results = []
         for video, script, question, actions, label, meta in batch:
             video = self.mlp_v(video) 
-            # script, _ = self.v2s(video, script, script)
             script = self.mlp_t(script)
             video = self.s2v(script.unsqueeze(1), video.unsqueeze(1), video.unsqueeze(1))[0].squeeze_()
             question = self.mlp_t(question)
@@ -74,11 +73,7 @@ class Q2A(nn.Module):
                     torch.stack(a_buttons).view(A, -1, a_texts.shape[1])
                 ).view(A, -1) 
                 answer_f, _= self.ab2at(a_buttons,a_texts, a_texts)
-                # q2answer, _ = self.q2a(question, answer_f, answer_f)
                 q2answer, _ = self.q2a(answer_f, question, question)
-                # vidbut, _ = self.v2b(video, a_buttons, a_buttons)
-
-                # qa = question + a_texts
                 qa_script, qa_script_mask = self.qa2s(
                     q2answer.unsqueeze(1), script.unsqueeze(1), script.unsqueeze(1)
                 )
